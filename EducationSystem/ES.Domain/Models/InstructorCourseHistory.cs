@@ -10,11 +10,12 @@ namespace ES.Domain.Models
     public class InstructorCourseHistory
     {
         [Key]
-        public int InstructorCourseHistoryID { get; set; }
-        public int InstructorID { get; set; }
-        public int CourseID { get; set; }
+        public int InstructorCourseHistoryId { get; set; }
+        public int InstructorId { get; set; }
+        public int CourseId { get; set; }
         public string SemesterTaught { get; set; }
 
+        //Foreign Keys
         public Instructor Instructor { get; set; }
         public Course Course { get; set; }
     }

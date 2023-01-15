@@ -10,10 +10,11 @@ namespace ES.Domain.Models
     public class ProgramSchool
     {
         [Key]
-        public int ProgramID { get; set; }
+        public int ProgramId { get; set; }
         public string ProgramName { get; set; }
         public string Description { get; set; }
 
+        //Foreign Keys
         public ICollection<ProgramEnrollment> ProgramEnrollments { get; set; }
         public ICollection<ProgramCourse> ProgramCourses { get; set; }
     }

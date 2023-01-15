@@ -10,12 +10,13 @@ namespace ES.Domain.Models
     public class CourseSchedule
     {
         [Key]
-        public int CourseScheduleID { get; set; }
-        public int CourseID { get; set; }
+        public int CourseScheduleId { get; set; }
+        public int CourseId { get; set; }
         public string DayOfWeek { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
 
+        //Foreign Keys
         public Course Course { get; set; }
     }
 

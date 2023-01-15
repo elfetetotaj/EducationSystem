@@ -10,12 +10,14 @@ namespace ES.Domain.Models
     public class Course
     {
         [Key]
-        public int CourseID { get; set; }
+        public int CourseId { get; set; }
         public string CourseCode { get; set; }
         public string CourseName { get; set; }
         public int CreditHours { get; set; }
         public string Description { get; set; }
 
+
+        //Foreign Keys
         public ICollection<Enrollment> Enrollments { get; set; }
         public ICollection<InstructorCourseHistory> InstructorCourseHistories { get; set; }
         public ICollection<ProgramCourse> ProgramCourses { get; set; }
