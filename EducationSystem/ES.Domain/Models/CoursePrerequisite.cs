@@ -10,13 +10,13 @@ namespace ES.Domain.Models
     public class CoursePrerequisite
     {
         [Key]
-        public int CoursePrerequisiteID { get; set; }
-        public int CourseID { get; set; }
-        public int PrerequisiteCourseID { get; set; }
+        public int CoursePrerequisiteId { get; set; }
+        public int CourseId { get; set; }
         public int MinimumGrade { get; set; }
+        public int MinimumAbsence { get; set; }
 
+        //Foreign Keys
         public Course Course { get; set; }
-        public Course PrerequisiteCourse { get; set; }
     }
 
 }

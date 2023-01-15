@@ -10,13 +10,14 @@ namespace ES.Domain.Models
     public class ProgramEnrollment
     {
         [Key]
-        public int ProgramEnrollmentID { get; set; }
-        public int StudentID { get; set; }
-        public int ProgramID { get; set; }
+        public int ProgramEnrollmentId { get; set; }
+        public int StudentId { get; set; }
+        public int ProgramId { get; set; }
         public DateTime EnrollmentDate { get; set; }
 
+        //Foreign Keys
         public Student Student { get; set; }
-        public ProgramSchool Program { get; set; }
+        public ProgramSchool ProgramSchool { get; set; }
     }
 
 }

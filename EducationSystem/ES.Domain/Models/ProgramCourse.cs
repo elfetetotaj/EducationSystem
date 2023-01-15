@@ -10,12 +10,14 @@ namespace ES.Domain.Models
     public class ProgramCourse
     {
         [Key]
-        public int ProgramCourseID { get; set; }
-        public int ProgramID { get; set; }
-        public int CourseID { get; set; }
+        public int ProgramCourseId { get; set; }
+        public int ProgramId { get; set; }
+        public int CourseId { get; set; }
         public bool IsRequired { get; set; }
 
-        public ProgramSchool Program { get; set; }
+
+        //Foreign Keys
+        public ProgramSchool ProgramSchool { get; set; }
         public Course Course { get; set; }
     }
 
