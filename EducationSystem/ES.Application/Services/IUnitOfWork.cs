@@ -1,4 +1,5 @@
 ﻿using ES.Application.Services.Interfaces;
+using ES.Application.Services.Repository;
 using ES.Infrastructure;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,58 +28,47 @@ namespace ES.Application.Services
         IStudentAttendance StudentAttendances { get; }
         ICourseSchedule CourseSchedules { get; }
 
-        Task SaveAsync();
     }
 
-    public class UnitOfWork /*: IUnitOfWork*/
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-        private IStudent _students;
-        private ICourse _courses;
-        private IInstructor _instructors;
-        private IEnrollment _enrollments;
-        private IDepartment _departments;
-        private IProgramSchool _programsschool;
-        private IProgramEnrollment _programEnrollments;
-        private ICourseEnrollmentHistory _courseEnrollmentHistories;
-        private IInstructorCourseHistory _instructorCourseHistories;
-        private ICoursePrerequisite _coursePrerequisites;
-        private IStudentAdvisor _studentAdvisors;
-        private IProgramCourse _programCourses;
-        private IStudentGrade _studentGrades;
-        private IStudentAttendance _studentAttendances;
-        private ICourseSchedule _courseSchedules;
+        public IStudent Students { get; private set; }
+        public ICourse Courses { get; private set; }
+        public IInstructor Instructors { get; private set; }
+        public IEnrollment Enrollments { get; private set; }
+        public IDepartment Departments { get; private set; }
+        public IProgramSchool ProgramsSchool { get; private set; }
+        public IProgramEnrollment ProgramEnrollments { get; private set; }
+        public ICourseEnrollmentHistory CourseEnrollmentHistories { get; private set; }
+        public IInstructorCourseHistory InstructorCourseHistories { get; private set; }
+        public ICoursePrerequisite CoursePrerequisites { get; private set; }
+        public IStudentAdvisor StudentAdvisors { get; private set; }
+        public IProgramCourse ProgramCourses { get; private set; }
+        public IStudentGrade StudentGrades { get; private set; }
+        public IStudentAttendance StudentAttendances { get; private set; }
+        public ICourseSchedule CourseSchedules { get; private set; }
 
+
+        public UnitOfWork(ApplicationDbContext context)
+        {
+            _context = context;
+            Students = new StudentRepository(context);
+            Courses = new CourseRepository(context);
+            Instructors = new InstructorRepository(context);
+            //Enrollments = new EnrollmentRepository(context);
+            //Departments = new DepartmentRepository(context);
+            //ProgramsSchool = new ProgramSchoolRepository(context);
+            //ProgramEnrollments = new ProgramEnrollmentRepository(context);
+            //CourseEnrollmentHistories = new CourseEnrollmentHistoryRepository(context);
+            //InstructorCourseHistories = new InstructorCourseHistoryRepository(context);
+            //CoursePrerequisites = new CoursePrerequisiteRepository(context);
+            //StudentAdvisors = new StudentAdvisorRepository(context);
+            //ProgramCourses = new ProgramCourseRepository(context);
+            //StudentGrades = new StudentGradeRepository(context);
+            //StudentAttendances = new StudentAttendanceRepository(context);
+            //CourseSchedules = new CourseScheduleRepository(context);
+
+        }
     }
-
-    //public class UnitOfWork : IUnitOfWork, IDisposable
-    //{
-    //    private readonly ApplicationDbContext _context;
-    //    private readonly ILogger _logger;
-
-    //    public IStudent Student { get; private set; }
-
-    //    public UnitOfWork(ApplicationDbContext context, ILoggerFactory loggerFactory)
-    //    {
-    //        _context = context;
-    //        _logger = loggerFactory.CreateLogger("logs");
-
-    //        Users = new UserRepository(context, _logger);
-    //    }
-
-    //    public async Task CompleteAsync()
-    //    {
-    //        await _context.SaveChangesAsync();
-    //    }
-
-    //    public void Dispose()
-    //    {
-    //        _context.Dispose();
-    //    }
-    //}
-
-    //public async Task SaveAsync()
-    //{
-    //    await _context.SaveChangesAsync();
-    //}
 }
