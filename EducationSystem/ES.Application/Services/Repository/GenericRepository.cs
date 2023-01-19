@@ -1,4 +1,5 @@
-﻿using ES.Domain.Models;
+﻿using ES.Application.Services.Interfaces;
+using ES.Domain.Models;
 using ES.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ES.Application.Services.Repository
 {
-    public class GenericRepository<T> where T : class
+    public class GenericRepository<T> : IGeneric<T> where T : class
     {
         private readonly ApplicationDbContext _context;
         private DbSet<T> dbSet;
@@ -57,5 +58,15 @@ namespace ES.Application.Services.Repository
         public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate) => await dbSet.Where(predicate).ToListAsync();
 
         public async Task<List<T>> FindList(Expression<Func<T, bool>> predicate) => await dbSet.Where(predicate).ToListAsync();
+
+        public Task<T> GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
