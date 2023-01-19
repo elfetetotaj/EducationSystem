@@ -27,6 +27,7 @@ namespace ES.Application.Services
         IStudentGrade StudentGrades { get; }
         IStudentAttendance StudentAttendances { get; }
         ICourseSchedule CourseSchedules { get; }
+        IBirthplace Birthplace { get; }
 
     }
 
@@ -48,6 +49,7 @@ namespace ES.Application.Services
         public IStudentGrade StudentGrades { get; private set; }
         public IStudentAttendance StudentAttendances { get; private set; }
         public ICourseSchedule CourseSchedules { get; private set; }
+        public IBirthplace Birthplace { get; private set; }
 
 
         public UnitOfWork(ApplicationDbContext context)
@@ -56,6 +58,7 @@ namespace ES.Application.Services
             Students = new StudentRepository(context);
             Courses = new CourseRepository(context);
             Instructors = new InstructorRepository(context);
+            Birthplace = new BirthplaceRepository(context);
             //Enrollments = new EnrollmentRepository(context);
             //Departments = new DepartmentRepository(context);
             //ProgramsSchool = new ProgramSchoolRepository(context);
