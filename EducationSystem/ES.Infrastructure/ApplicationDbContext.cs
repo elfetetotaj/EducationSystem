@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ES.Infrastructure
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -26,5 +26,6 @@ namespace ES.Infrastructure
         public DbSet<StudentGrade> StudentGrades { get; set; }
         public DbSet<StudentAttendance> StudentAttendances { get; set; }
         public DbSet<CourseSchedule> CourseSchedules { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
